@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.attendanceTracker;
 
 import org.junit.Test;
 
