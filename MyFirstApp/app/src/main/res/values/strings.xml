@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My First App</string>
+    <string name="helloworld_menu">Hello World</string>
+    <string name="helloase_menu">Hello Ase</string>
+    <string name="guestbook_menu">Guestbook</string>
+
+</resources>
