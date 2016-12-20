@@ -2,6 +2,8 @@
     <string name="app_name">Attendance Tracker</string>
     <string name="helloworld_menu">Hello World</string>
     <string name="helloase_menu">Hello Ase</string>
-    <string name="guestbook_menu">Guestbook</string>
+
+    <string name="qrCode">QR-Code</string>
+    <string name="loadBtn">Load QR-Code</string>
 
 </resources>
