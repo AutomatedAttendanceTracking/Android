@@ -32,8 +32,8 @@
 
     <ImageView
         android:id="@+id/qrCode"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/qrCode"

@@ -1,9 +1,9 @@
 package com.attendanceTracker;
 
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,8 +15,11 @@ import android.widget.Toast;
 import com.attendanceTracker.auxiliary.NetUtils;
 import com.example.attendanceTracker.R;
 
+import net.glxn.qrgen.android.QRCode;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String LOG_TAG = "MainActivity";
 
     private ImageView qrView;
     private ProgressBar spinner;
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if (view == loadBtn) {
-            new AsyncTask<Void, Void, Bitmap>() {
+            new AsyncTask<Void, Void, String>() {
 
                 NetUtils net = new NetUtils();
 
@@ -68,14 +71,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 @Override
-                protected Bitmap doInBackground(Void... voids) {
-                    return net.downloadImage(NetUtils.DOWNLOAD_URL);
+                protected String doInBackground(Void... voids) {
+                    return net.downloadString(NetUtils.DOWNLOAD_URL);
                 }
 
                 @Override
-                protected void onPostExecute(Bitmap bitmap) {
-                    if (bitmap != null) {
-                        qrView.setImageBitmap(bitmap);
+                protected void onPostExecute(String qrCodeString) {
+                    if (qrCodeString != null) {
+                        Log.d(LOG_TAG, qrCodeString);
+                        QRCode qrCode = QRCode.from(qrCodeString).withSize(320, 320);
+                        qrView.setImageBitmap(qrCode.bitmap());
                     }
                     spinner.setVisibility(View.INVISIBLE);
                 }
